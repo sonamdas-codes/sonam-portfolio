@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090711">
+<meta name="description" content="Sonam Das - AI/ML and Software Developer Portfolio">
+<title>Sonam Das | AI/ML Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#090711;
+  --card:#151120;
+  --purple:#a879ff;
+  --silver:#e5def2;
+  --muted:#aaa0bb;
+  --border:rgba(168,121,255,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:var(--bg);color:white;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body::before{
+ content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(circle at 80% 15%,#38205c55,transparent 32%),
+ radial-gradient(circle at 10% 70%,#38205c33,transparent 30%);
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,90%);margin:auto}
+nav{position:fixed;top:0;width:100%;z-index:10;background:#090711e8;backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.navbar{height:75px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Space Grotesk';font-size:24px;font-weight:700}
+.logo span{color:var(--purple)}
+.navlinks{display:flex;gap:25px}
+.navlinks a{font-size:13px;color:var(--muted);transition:.3s}
+.navlinks a:hover{color:var(--purple)}
+.menu{display:none;background:none;border:0;color:white;font-size:25px;cursor:pointer}
+.hero{min-height:100vh;padding-top:100px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:35px}
+.tag{display:inline-block;border:1px solid var(--border);background:#a879ff12;padding:9px 15px;border-radius:30px;color:#c9adff;font-size:12px;letter-spacing:1.5px}
+.hero h1{font-family:'Space Grotesk';font-size:clamp(48px,7vw,78px);line-height:1.08;letter-spacing:-3px;margin:25px 0 18px}
+.gradient{background:linear-gradient(100deg,#fff,#c6a1ff,#9061e8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;color:var(--muted);line-height:1.9;font-size:15px}
+.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:14px 21px;border-radius:9px;font-size:13px;font-weight:700;transition:.3s}
+.primary{background:linear-gradient(110deg,#a879ff,#7545c9);box-shadow:0 8px 28px #7545c944}
+.secondary{border:1px solid var(--border);color:var(--silver)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px #7545c944}
+.visual{display:grid;place-items:center;min-height:400px;position:relative}
+.orbit{height:280px;width:280px;border-radius:50%;border:1px solid #a879ff77;display:grid;place-items:center;box-shadow:0 0 80px #7545c922,inset 0 0 70px #7545c922;animation:float 5s ease-in-out infinite;position:relative}
+.orbit:before{content:"";position:absolute;inset:23px;border:1px solid #a879ff44;border-radius:50%}
+.orbit:after{content:"";position:absolute;inset:-24px;border:1px dashed #a879ff66;border-radius:50%;animation:spin 30s linear infinite}
+.initials{height:145px;width:145px;border-radius:35px;display:grid;place-items:center;background:linear-gradient(145deg,#34214f,#130e20);border:1px solid #a879ff88;color:#ddc9ff;font-size:48px;font-weight:700;font-family:'Space Grotesk';box-shadow:0 0 55px #a879ff44}
+.float{position:absolute;background:#1c1728;border:1px solid var(--border);border-radius:10px;padding:11px 15px;color:#d8c5ff;font-size:12px}
+.f1{top:45px;right:0}.f2{bottom:65px;left:0}.f3{bottom:5px;right:25px}
+@keyframes float{50%{transform:translateY(-15px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:95px 0}
+.section-tag{color:var(--purple);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:'Space Grotesk';font-size:clamp(30px,5vw,43px);margin-bottom:15px;letter-spacing:-1px}
+.description{color:var(--muted);line-height:1.9;max-width:650px;font-size:14px}
+.panel{background:linear-gradient(145deg,#191425,#100d18);border:1px solid var(--border);border-radius:17px;padding:28px}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;margin-top:35px}
+.panel h3{font-family:'Space Grotesk';margin-bottom:15px}
+.panel p{color:var(--muted);line-height:1.9;font-size:14px}
+.info{display:grid;gap:15px;margin-top:10px}
+.info div{border-bottom:1px solid var(--border);padding-bottom:12px}
+.info small{display:block;color:var(--muted);margin-bottom:5px}
+.info strong{font-size:14px;color:var(--silver)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:35px}
+.skill{background:var(--card);border:1px solid var(--border);padding:22px 15px;border-radius:13px;text-align:center;transition:.3s}
+.skill:hover{transform:translateY(-7px);border-color:var(--purple);box-shadow:0 10px 30px #7545c922}
+.skill span{font-size:25px;display:block;margin-bottom:12px}
+.skill strong{font-size:13px;color:var(--silver)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:35px}
+.project{background:linear-gradient(145deg,#191425,#100d18);border:1px solid var(--border);border-radius:16px;padding:25px;transition:.3s}
+.project:hover{transform:translateY(-6px);border-color:var(--purple)}
+.project .number{color:var(--purple);font-size:12px;letter-spacing:2px}
+.project h3{font-family:'Space Grotesk';margin:15px 0 10px}
+.project p{color:var(--muted);font-size:13px;line-height:1.8}
+.project .status{display:inline-block;margin-top:18px;font-size:11px;color:#c9adff;background:#a879ff16;padding:7px 11px;border-radius:20px}
+.timeline{margin-top:35px;border-left:1px solid #a879ff66;padding-left:25px}
+.timeline-item{position:relative;margin-bottom:28px}
+.timeline-item:before{content:"";position:absolute;left:-31px;top:5px;height:11px;width:11px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple)}
+.timeline-item h3{font-family:'Space Grotesk';font-size:17px}
+.timeline-item p{color:var(--muted);font-size:13px;line-height:1.8;margin-top:7px}
+.resume-box,.contact-box{margin-top:30px;padding:38px 25px;text-align:center;background:linear-gradient(145deg,#201631,#100d18);border:1px solid var(--border);border-radius:18px}
+.resume-box h3,.contact-box h3{font:600 27px 'Space Grotesk';margin-bottom:12px}
+.resume-box p,.contact-box p{color:var(--muted);font-size:14px;line-height:1.8}
+.contact-links{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:25px}
+footer{border-top:1px solid var(--border);padding:25px;text-align:center;color:var(--muted);font-size:12px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:750px){
+ .hero{grid-template-columns:1fr;padding-top:140px;text-align:center}
+ .hero p{margin:auto}.buttons{justify-content:center}
+ .visual{min-height:340px}.orbit{height:230px;width:230px}
+ .initials{height:120px;width:120px;font-size:40px}
+ .navlinks{display:none;position:absolute;top:75px;left:0;width:100%;padding:25px;background:#100d18;flex-direction:column;align-items:center}
+ .navlinks.active{display:flex}.menu{display:block}
+ .about-grid,.projects{grid-template-columns:1fr}
+ .skills{grid-template-columns:repeat(2,1fr)}
+ section{padding:75px 0}
+}
+</style>
+</head>
+
+<body>
+<nav>
+ <div class="container navbar">
+  <a href="#home" class="logo">SONAM<span>.</span></a>
+  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+  <div class="navlinks" id="navlinks">
+   <a href="#home">Home</a><a href="#about">About</a>
+   <a href="#skills">Skills</a><a href="#projects">Projects</a>
+   <a href="#education">Education</a><a href="#contact">Contact</a>
+  </div>
+ </div>
+</nav>
+
+<header class="container hero" id="home">
+ <div class="reveal">
+  <span class="tag">✦ AI/ML & SOFTWARE DEVELOPER</span>
+  <h1>Hello, I'm<br><span class="gradient">Sonam Das.</span></h1>
+  <p>
+   A Computer Science Engineering student passionate about
+   technology, Python, artificial intelligence and building
+   meaningful software solutions. Always learning, creating
+   and exploring what's possible with code.
+  </p>
+  <div class="buttons">
+   <a class="btn primary" href="#projects">Explore My Work ↗️</a>
+   <a class="btn secondary" href="#contact">Let's Connect</a>
+  </div>
+ </div>
+ <div class="visual reveal">
+  <div class="orbit"><div class="initials">SD</div></div>
+  <div class="float f1">✧ Python</div>
+  <div class="float f2">✧ Machine Learning</div>
+  <div class="float f3">✧ Developer</div>
+ </div>
+</header>
+
+<section id="about">
+ <div class="container reveal">
+  <div class="section-tag">01 / ABOUT ME</div>
+  <h2 class="section-title">A little about <span class="gradient">me.</span></h2>
+  <p class="description">Curiosity drives me. Technology inspires me. Building things motivates me.</p>
+  <div class="about-grid">
+   <div class="panel">
+    <h3>Who I Am</h3>
+    <p>
+     I'm Sonam Das, a third-year B.Tech Computer Science Engineering
+     student at Parul University. I'm interested in software
+     development and artificial intelligence. I enjoy learning
+     programming, understanding how technology works and developing
+     my technical skills through practice and projects.
+     My goal is to grow into a skilled software and AI/ML developer.
+    </p>
+   </div>
+   <div class="panel">
+    <h3>Quick Details</h3>
+    <div class="info">
+     <div><small>Name</small><strong>Sonam Das</strong></div>
+     <div><small>Degree</small><strong>B.Tech – CSE</strong></div>
+     <div><small>University</small><strong>Parul University</strong></div>
+     <div><small>Graduation</small><strong>2028</strong></div>
+     <div><small>Location</small><strong>Vadodara, Gujarat</strong></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="skills">
+ <div class="container reveal">
+  <div class="section-tag">02 / MY TOOLKIT</div>
+  <h2 class="section-title">Technical <span class="gradient">Skills.</span></h2>
+  <p class="description">Technologies and tools I am learning and working with.</p>
+  <div class="skills">
+   <div class="skill"><span>🐍</span><strong>Python</strong></div>
+   <div class="skill"><span>☕</span><strong>Java</strong></div>
+   <div class="skill"><span>🌐</span><strong>HTML</strong></div>
+   <div class="skill"><span>🎨</span><strong>CSS</strong></div>
+   <div class="skill"><span>🤖</span><strong>Machine Learning</strong></div>
+   <div class="skill"><span>🗄️</span><strong>Databases</strong></div>
+   <div class="skill"><span>⌨️</span><strong>JavaScript</strong></div>
+   <div class="skill"><span>🐙</span><strong>Git & GitHub</strong></div>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <div class="container reveal">
+  <div class="section-tag">03 / SELECTED WORK</div>
+  <h2 class="section-title">Projects & <span class="gradient">Ideas.</span></h2>
+  <p class="description">A space for my development journey. Project descriptions below are ideas, not claims of completed work. I'll add real projects and GitHub links as I build them.</p>
+  <div class="projects">
+   <article class="project">
+    <div class="number">PROJECT IDEA / 01</div>
+    <h3>Student Performance Predictor</h3>
+    <p>A machine learning project idea to explore student performance prediction using academic data and Python.</p>
+    <span class="status">Planned project</span>
+   </article>
+   <article class="project">
+    <div class="number">PROJECT IDEA / 02</div>
+    <h3>AI Resume Analyzer</h3>
+    <p>A concept for exploring resume text analysis, skill extraction and job-description matching.</p>
+    <span class="status">Planned project</span>
+   </article>
+   <article class="project">
+    <div class="number">PROJECT IDEA / 03</div>
+    <h3>AI Study Assistant</h3>
+    <p>A learning assistant concept to explore useful AI features for students and study workflows.</p>
+    <span class="status">Planned project</span>
+   </article>
+   <article class="project">
+    <div class="number">PROJECT IDEA / 04</div>
+    <h3>House Price Estimator</h3>
+    <p>A machine learning practice idea to estimate house prices from property features and sample datasets.</p>
+    <span class="status">Planned project</span>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="education">
+ <div class="container reveal">
+  <div class="section-tag">04 / MY JOURNEY</div>
+  <h2 class="section-title">Education & <span class="gradient">Growth.</span></h2>
+  <div class="timeline">
+   <div class="timeline-item">
+    <h3>Bachelor of Technology – Computer Science Engineering</h3>
+    <p>Parul University, Vadodara, Gujarat<br>Expected Graduation: 2028</p>
+   </div>
+   <div class="timeline-item">
+    <h3>Learning & Skill Development</h3>
+    <p>Continuously exploring Python, Java, software development and the foundations of AI and machine learning.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="resume">
+ <div class="container reveal">
+  <div class="section-tag">05 / RESUME</div>
+  <h2 class="section-title">My <span class="gradient">Resume.</span></h2>
+  <div class="resume-box">
+   <h3>Resume coming soon</h3>
+   <p>My resume will be available here soon. Check back for updates!</p>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container reveal">
+  <div class="section-tag">06 / GET IN TOUCH</div>
+  <h2 class="section-title">Let's build something <span class="gradient">great.</span></h2>
+  <div class="contact-box">
+   <h3>Have an opportunity or an idea?</h3>
+   <p>I'm interested in connecting with developers, learning from new experiences and exploring internship opportunities.</p>
+   <div class="contact-links">
+    <a class="btn primary" href="mailto:sonamdas371@gmail.com">Email Me ↗️</a>
+    <a class="btn secondary" href="https://github.com/sonamdas-codes" target="_blank" rel="noopener">GitHub ↗️</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <p>Designed & built by <span class="gradient">Sonam Das</span></p>
+ <p style="margin-top:8px">©️ 2026 · Learning, creating and growing.</p>
+</footer>
+
+<script>
+const menu = document.getElementById('menu');
+const links = document.getElementById('navlinks');
+
+menu.addEventListener('click', () => {
+ links.classList.toggle('active');
+});
+
+document.querySelectorAll('.navlinks a').forEach(link => {
+ link.addEventListener('click', () => links.classList.remove('active'));
+});
+
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if (entry.isIntersecting) {
+   entry.target.classList.add('show');
+   observer.unobserve(entry.target);
+  }
+ });
+}, {threshold:0.12});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
