@@ -102,10 +102,172 @@ footer{border-top:1px solid var(--border);padding:25px;text-align:center;color:v
  .skills{grid-template-columns:repeat(2,1fr)}
  section{padding:75px 0}
 }
+  /* ===== CINEMATIC PORTFOLIO INTRO ===== */
+#intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 65%, #32145155, transparent 45%),
+    #08060e;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#intro-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 15% 20%, #c69aff, transparent),
+    radial-gradient(2px 2px at 80% 25%, #a879ff, transparent),
+    radial-gradient(2px 2px at 30% 75%, #c69aff, transparent),
+    radial-gradient(2px 2px at 70% 80%, #a879ff, transparent),
+    radial-gradient(1px 1px at 55% 15%, white, transparent);
+  background-size: 350px 350px;
+  animation: starsMove 12s linear infinite;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  animation: introAppear 1.3s ease both;
+}
+
+.intro-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(55px, 11vw, 105px);
+  font-weight: 500;
+  letter-spacing: 8px;
+  color: #eee5ff;
+  text-shadow: 0 0 15px #a879ff, 0 0 45px #7545c9;
+}
+
+.intro-name span {
+  color: #a879ff;
+}
+
+.intro-butterfly {
+  position: absolute;
+  top: -32px;
+  right: 5%;
+  font-size: 32px;
+  color: #c5a1ff;
+  filter: drop-shadow(0 0 12px #a879ff);
+  animation: butterflyFloat 3s ease-in-out infinite;
+}
+
+.intro-subtitle {
+  margin-top: 15px;
+  color: #c9bddc;
+  font-size: 11px;
+  letter-spacing: 6px;
+}
+
+.intro-orbit {
+  position: absolute;
+  width: 115%;
+  height: 90%;
+  left: -7.5%;
+  top: 5%;
+  border: 1px solid #a879ff55;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.intro-loading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.intro-track {
+  width: min(280px, 65vw);
+  height: 3px;
+  background: #30243e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.intro-progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #7545c9, #e5cfff);
+  box-shadow: 0 0 15px #a879ff;
+  animation: introLoad 2.7s ease forwards;
+}
+
+.intro-percent {
+  color: #d9c8f5;
+  font-size: 12px;
+}
+
+.intro-caption {
+  margin-top: 18px;
+  color: #91849f;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+@keyframes introLoad {
+  to { width: 100%; }
+}
+
+@keyframes introAppear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes butterflyFloat {
+  50% { transform: translateY(-10px) rotate(8deg); }
+}
+
+@keyframes starsMove {
+  to { background-position: 100px 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #intro-loader, .intro-content, .intro-progress,
+  .intro-stars, .intro-butterfly {
+    animation: none;
+  }
+  .intro-progress { width: 100%; }
+}
 </style>
 </head>
 
 <body>
+  <div id="intro-loader">
+  <div class="intro-stars"></div>
+  <div class="intro-content">
+    <div class="intro-orbit"></div>
+    <div class="intro-butterfly">🦋</div>
+    <div class="intro-name">SONAM<span>.</span></div>
+    <div class="intro-subtitle">WELCOME TO MY PORTFOLIO</div>
+    <div class="intro-loading">
+      <div class="intro-track">
+        <div class="intro-progress"></div>
+      </div>
+      <span class="intro-percent">100%</span>
+    </div>
+    <div class="intro-caption">A little world of ideas & creativity</div>
+  </div>
+</div>
 <nav>
  <div class="container navbar">
   <a href="#home" class="logo">SONAM<span>.</span></a>
@@ -294,6 +456,13 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold:0.12});
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  window.addEventListener('load', () => {
+  const intro = document.getElementById('intro-loader');
+
+  setTimeout(() => {
+    intro.classList.add('hide');
+  }, 3000);
+});
 </script>
 </body>
 </html>
